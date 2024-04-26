@@ -1,0 +1,2 @@
+# CareerApp
+RSbuild + ReactJS + Zustand
