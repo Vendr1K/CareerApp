@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--text);
+}
+
+:root {
+  --box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.03);
+  --background: #f9f9f9;
+  --primary: #5c89ce;
+  --border-radius: 16px;
+  --text: #202020;
+}
