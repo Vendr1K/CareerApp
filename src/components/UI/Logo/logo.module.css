@@ -1,3 +1,7 @@
+.link {
+  white-space: nowrap;
+}
+
 .logo {
   text-transform: uppercase;
   font-weight: 700;

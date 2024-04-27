@@ -1,3 +1,4 @@
+import { NavBar } from '../NavBar/NavBar'
 import { Logo, Container } from '../UI'
 
 import styles from './header.module.css'
@@ -5,10 +6,10 @@ import styles from './header.module.css'
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <Container>
+      <Container className={styles.container}>
         <Logo />
+        <NavBar />
       </Container>
-
     </header>
   )
 }

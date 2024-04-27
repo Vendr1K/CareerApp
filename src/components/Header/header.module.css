@@ -1,4 +1,18 @@
 .header {
   width: 100%;
   box-shadow: var(--box-shadow);
+  background: var(--background);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 220px;
+  height: 72px;
+}
+
+.nav {
+  display: flex;
+  gap: 72px;
 }
