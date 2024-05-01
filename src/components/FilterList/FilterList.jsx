@@ -1,6 +1,6 @@
 
-import { Icon } from "../Icon/Icon"
-import { List, ListItem, Button } from "../UI"
+import { FilterItem } from ".."
+import { List } from "../UI"
 
 import styles from './filterList.module.css'
 
@@ -9,18 +9,18 @@ export const FilterList = () => {
     {
       id: 1,
       icon: 'location',
-      value: 'Город',
+      text: 'Город',
       extraIcon: null
     },
     {
       id: 2,
       icon: 'bag',
-      value: 'Тип занятости',
+      text: 'Тип занятости',
       extraIcon: 'arrow'
     }, {
       id: 3,
       icon: 'optional',
-      value: 'Дополнительные фильтры',
+      text: 'Дополнительные фильтры',
       extraIcon: 'arrow'
     }
   ]
@@ -29,13 +29,12 @@ export const FilterList = () => {
       <List className={styles.list}>
         {dataFilter.map((filter) => {
           return (
-            <ListItem className={styles.item}>
-              <Button className={styles.button}>
-                <Icon name={filter.icon} />
-                <span className={styles.text}>{filter.value}</span>
-                {filter.extraIcon && <Icon name={filter.extraIcon} />}
-              </Button>
-            </ListItem>
+            <FilterItem
+              extraIcon={filter.extraIcon}
+              icon={filter.icon}
+              text={filter.text}
+              key={filter.id}
+            />
           )
         })}
       </List>

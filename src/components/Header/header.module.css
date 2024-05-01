@@ -1,4 +1,6 @@
 .header {
+  position: fixed;
+  z-index: 100;
   width: 100%;
   box-shadow: var(--box-shadow);
   background: var(--background);
@@ -8,11 +10,28 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 220px;
+  gap: 20px;
   height: 72px;
 }
 
+.logo {
+  margin-right: auto;
+}
+
 .nav {
-  display: flex;
-  gap: 72px;
+  margin-right: 323px;
+}
+
+@media all and (max-width: 1024px) {
+  .container {
+    gap: 130px;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  .nav {
+    margin-right: 0;
+  }
 }

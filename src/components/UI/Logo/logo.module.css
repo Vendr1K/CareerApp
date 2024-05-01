@@ -1,5 +1,8 @@
 .link {
   white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
 }
 
 .logo {
