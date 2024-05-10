@@ -1,5 +1,6 @@
 .item {
   width: 100%;
+  position: relative;
 }
 
 .button {
@@ -10,6 +11,58 @@
   width: 100%;
   border-radius: var(--border-radius);
   gap: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.button.open,
+.button:hover {
+  background-color: var(--primary-secondary);
+  transition: background-color 0.2s ease;
+}
+
+.button.open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: border-bottom-left-radius 0.5s ease, border-bottom-right-radius 0.5s ease;
+}
+
+.button.open .text {
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.button.open .icon path {
+  fill: var(--text);
+  transition: fill 0.2s ease;
+}
+
+.button.open .icon {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.button.recursion {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.button.recursion::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(90deg, var(--neutral-100), var(--neutral-200), var(--neutral-100));
+}
+
+.icon {
+  transition: transform 0.2s ease;
+}
+
+.icon path {
+  transition: fill 0.2s ease;
 }
 
 .text {
@@ -18,4 +71,58 @@
   line-height: 133%;
   color: var(--text-secondary);
   margin-right: auto;
+  transition: color 0.2s ease;
+}
+
+.optionWrapper {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 42px;
+  width: 100%;
+  height: auto;
+  background-color: var(--background);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.optionWrapper.relative {
+  position: relative;
+  top: auto;
+  left: auto;
+}
+
+.list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+}
+
+.itemDrop {
+  width: 100%;
+}
+
+.label {
+  display: flex;
+  position: relative;
+  background-color: var(--background);
+  width: 100%;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 24px;
+  cursor: pointer;
+}
+
+.radio,
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--neutral-200);
+  border-radius: 4px;
 }

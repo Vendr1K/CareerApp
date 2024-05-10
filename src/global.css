@@ -17,11 +17,15 @@ body {
 :root {
   --box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.03);
   --box-shadow-hover: 4px 4px 15px 0 rgba(0, 0, 0, 0.08);
-  --background: #f9f9f9;
+  --background: #f6f6f6;
   --background-page: #F2F2F2;
   --primary: #5c89ce;
+  --primary-secondary: #ebf1fa;
   --border-radius: 16px;
   --text: #202020;
   --inactive: #C5C5C5;
   --text-secondary: #747474;
+  --neutral-100: #F9F9F9;
+  --neutral-200: #dadada;
+
 }

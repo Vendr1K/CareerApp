@@ -1,8 +1,6 @@
 import { Header, Footer, Layout, Main, FilterList, VacancyList } from './components';
 import { Container } from './components/UI';
 
-import styles from './app.module.css';
-
 const App = () => {
 
   const mockData = [
@@ -408,7 +406,7 @@ const App = () => {
   return (
     <Layout>
       <Header />
-      <Main className={styles.main}>
+      <Main>
         <Container>
           <FilterList />
           <VacancyList data={mockData} />
