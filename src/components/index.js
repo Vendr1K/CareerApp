@@ -10,3 +10,4 @@ export { VacancyList } from "./VacancyList/VacancyList";
 export { VacancyBlock } from "./VacancyBlock/VacancyBlock";
 export { VacancyCard } from "./VacancyCard/VacancyCard";
 export { Icon } from "./Icon/Icon";
+export { SkeletonBlock } from "./SkeletonBlock/SkeletonBlock";
