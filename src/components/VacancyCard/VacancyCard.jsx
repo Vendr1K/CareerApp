@@ -4,6 +4,18 @@ import styles from './vacancyCard.module.css'
 
 export const VacancyCard = ({ vacancy }) => {
   const { name, salary, experience, area, employer } = vacancy;
+
+  const convertСurrency = (cur) => {
+    switch (cur) {
+      case 'RUR':
+        return `₽`
+      case 'USD':
+        return '$'
+      default:
+        return cur
+    }
+  }
+
   return (
     <ListItem className={styles.wrapper}>
       <div className={styles.top}>
@@ -12,14 +24,13 @@ export const VacancyCard = ({ vacancy }) => {
       </div>
       <span className={styles.price}>
         {salary ?
-          `${salary.from && `от ${salary.from}` || ''} ${salary.from && salary.to && '-' || ''} ${salary.to && `до ${salary.to}` || ''} ${salary.currency ?? salary.currency} `
+          `${salary.from && `от ${salary.from.toLocaleString()}` || ''} ${salary.from && salary.to && '-' || ''} ${salary.to && `до ${salary.to.toLocaleString()}` || ''} ${salary.currency ? convertСurrency(salary.currency) : ''}  `
           :
           'Доход не указан'
         }
       </span>
       <span className={`${styles.text} ${styles.company}`}>{employer.name}</span>
       <span className={`${styles.text} ${styles.city}`}>{area.name}</span>
-      {/* <Skeleton/> */}
       <div className={styles.exp}>
         <Icon className={styles.icon} name={'star'} />
         <span className={styles.text}>

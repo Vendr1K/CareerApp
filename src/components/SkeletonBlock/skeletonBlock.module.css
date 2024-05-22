@@ -19,7 +19,7 @@
   padding: 32px;
   width: 100%;
   background-color: var(--background);
-  box-shadow: var(--box-sgadow);
+  box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
 }
 
