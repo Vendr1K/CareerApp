@@ -23,7 +23,9 @@
 .button.open {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  transition: border-bottom-left-radius 0.5s ease, border-bottom-right-radius 0.5s ease;
+  transition:
+    border-bottom-left-radius 0.5s ease,
+    border-bottom-right-radius 0.5s ease;
 }
 
 .button.open .text {
@@ -54,7 +56,12 @@
   top: 0;
   right: 0;
   left: 0;
-  background: linear-gradient(90deg, var(--neutral-100), var(--neutral-200), var(--neutral-100));
+  background: linear-gradient(
+    90deg,
+    var(--neutral-100),
+    var(--neutral-200),
+    var(--neutral-100)
+  );
 }
 
 .icon {
