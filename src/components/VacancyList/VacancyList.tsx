@@ -1,9 +1,8 @@
-import { VacancyBlock } from '..'
-import { List } from '../UI'
-
+import { List, VacancyBlock } from '@components'
 import styles from './vacancyList.module.css'
+import { VacancyListProps } from '@props'
 
-export const VacancyList = ({ data }) => {
+export const VacancyList = ({ data }: VacancyListProps) => {
   return (
     <List className={styles.wrapper}>
       {data.map((dataBlock, index) => {

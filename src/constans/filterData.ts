@@ -1,6 +1,6 @@
 const dataBagFilter = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'Полная занятость', id: 'fullTime' },
     { value: 'Частичная занятость', id: 'partTime' },
     { value: 'Стажировка', id: 'internship' },
@@ -10,7 +10,7 @@ const dataBagFilter = {
 
 const dataTechnologiesFilter = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'jQuery', id: 'jQuery' },
     { value: 'JavaScript', id: 'JavaScript' },
     { value: 'CSS3', id: 'CSS3' },
@@ -24,7 +24,7 @@ const dataTechnologiesFilter = {
 
 const dataDatePublished = {
   type: 'radio',
-  filterOption: [
+  filterOptions: [
     { value: 'За все время', id: 'allTime' },
     { value: 'За месяц', id: 'LastMonth' },
     { value: 'За неделю', id: 'lastWeek' },
@@ -35,7 +35,7 @@ const dataDatePublished = {
 
 const dataDateExp = {
   type: 'radio',
-  filterOption: [
+  filterOptions: [
     { value: 'Не имеет значения', id: 'notImportant' },
     { value: 'Нет опыта', id: 'notExp' },
     { value: 'От 1 года до 3 лет', id: '1-3' },
@@ -46,7 +46,7 @@ const dataDateExp = {
 
 const dataTime = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'Полный день', id: 'fullTime' },
     { value: 'Вахтовый метод', id: 'shiftMonth' },
     { value: 'Сменный график', id: 'shift' },
@@ -57,7 +57,7 @@ const dataTime = {
 
 const dataEducation = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'Не требуется или не указано', id: 'any' },
     { value: 'Срднее профессиональное', id: 'normal' },
     { value: 'Высшее', id: 'hight' }
@@ -66,7 +66,7 @@ const dataEducation = {
 
 const dataIncomeLvl = {
   type: 'radio',
-  filterOption: [
+  filterOptions: [
     { value: 'Не имеет значения', id: 'any' },
     { value: 'От 25 000 ₽', id: '25000' },
     { value: 'От 50 000 ₽', id: '50000' },
@@ -78,7 +78,7 @@ const dataIncomeLvl = {
 
 const dataPartTime = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'Неполный день', id: 'any' },
     { value: 'От 4 часов в день', id: 'half' },
     { value: 'По вечерам', id: 'evening' },
@@ -89,7 +89,7 @@ const dataPartTime = {
 
 const dataOther = {
   type: 'checkbox',
-  filterOption: [
+  filterOptions: [
     { value: 'Доступные людям с инвалидностью', id: 'availability' },
     { value: 'Скрытие вакансии', id: 'hidden' },
     { value: 'От 4 часов в день', id: 'halfOther' },
@@ -157,43 +157,22 @@ const dataOptionalFilter = [
   }
 ]
 
-// const dataOptionalFilter = [
-//   {
-//     id: 2,
-//     icon: 'bag',
-//     text: 'Тип занятости',
-//     extraIcon: 'arrow',
-//     filterItem: dataBaFilter,
-//   },
-//   {
-//     id: 3,
-//     icon: 'bag',
-//     text: 'Тип занятости',
-//     extraIcon: 'arrow',
-//     filterItem: dataBaFilter,
-//   },
-//   {
-//     id: 4,
-//     icon: 'bag',
-//     text: 'Тип занятости',
-//     extraIcon: 'arrow',
-//     filterItem: dataBaFilter,
-//   },
-// ]
-
-export const filterData = [
-  {
-    id: 2,
-    text: 'Тип занятости',
-    icon: 'bag',
-    extraIcon: 'arrow',
-    filterItem: dataBagFilter
-  },
+export const dataAdditionalFilter = [
   {
     id: 3,
     text: 'Дополнительные фильтры',
     icon: 'optional',
     extraIcon: 'arrow',
     filterList: dataOptionalFilter
+  }
+]
+
+export const bagDataFilter = [
+  {
+    id: 2,
+    text: 'Тип занятости',
+    icon: 'bag',
+    extraIcon: 'arrow',
+    filterItem: dataBagFilter
   }
 ]

@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import { FilterItem, Icon } from '..'
 
-import { Button, List } from '@/components/UI'
+import { Nullable } from '@types'
+import { Button, FilterItem, Icon, List } from '@components'
+import { dataAdditionalFilter, bagDataFilter } from '@constans'
 
 import styles from './filterList.module.css'
-import { filterData } from '@constans/filterData'
 
 export const FilterList = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([''])
   const [inputValue, setInputValue] = useState('')
-  const [radioValue, setRadioValue] = useState(null)
+  const [radioValue, setRadioValue] = useState<Nullable<string>>(null)
 
   const clear = () => {
-    setData([])
+    setData([''])
     setInputValue('')
     setRadioValue(null)
   }
@@ -37,15 +37,31 @@ export const FilterList = () => {
           )}
         </label>
         <List className={styles.list}>
-          {filterData.map(filter => {
+          {bagDataFilter.map(filter => {
             return (
               <FilterItem
+                key={filter.id}
                 extraIcon={filter.extraIcon}
                 icon={filter.icon}
                 text={filter.text}
                 option={filter?.filterItem}
-                list={filter?.filterList}
+                data={data}
+                setData={setData}
+                radioValue={radioValue}
+                setRadioValue={setRadioValue}
+              />
+            )
+          })}
+        </List>
+        <List className={styles.list}>
+          {dataAdditionalFilter.map(filter => {
+            return (
+              <FilterItem
                 key={filter.id}
+                extraIcon={filter.extraIcon}
+                icon={filter.icon}
+                text={filter.text}
+                list={filter?.filterList}
                 data={data}
                 setData={setData}
                 radioValue={radioValue}

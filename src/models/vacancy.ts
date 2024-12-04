@@ -1,13 +1,13 @@
 import { Nullable } from '@types'
 
 export interface VacancyStore {
-  vacancyList: filtredVacancyList[]
+  vacancyList: FiltredVacancyList[]
   error: unknown
   isLoading: boolean
   fetchVacancyList: () => void
 }
 
-export interface vacancy {
+export interface Vacancy {
   name: string
   published_at: string
   salary: {
@@ -32,7 +32,7 @@ export interface vacancy {
   id: string
 }
 
-export interface filtredVacancyList {
+export interface FiltredVacancyList {
   date: string
-  vacancy: vacancy[]
+  vacancy: Vacancy[]
 }

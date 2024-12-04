@@ -1,11 +1,13 @@
 import { forwardRef } from 'react'
-import { DropdownProps } from './Dropdown.props'
+
+import { DropdownProps } from '@props'
+
+import cn from 'classnames'
 
 export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
-  (props, ref) => {
-    const { className, children } = props
+  ({ className, children }, ref) => {
     return (
-      <div className={`${className ?? ''}`} ref={ref}>
+      <div className={cn(className)} ref={ref}>
         {children}
       </div>
     )

@@ -1,11 +1,11 @@
-import { filtredVacancyList, vacancy } from '@models'
+import { FiltredVacancyList, Vacancy } from '@models'
 
 type Result = {
-  [key: string]: vacancy[]
+  [key: string]: Vacancy[]
 }
 
-export function daysApiFilter(data: vacancy[]): filtredVacancyList[] {
-  const dataDateFilter: { date: string; vacancy: vacancy[] }[] = []
+export function daysApiFilter(data: Vacancy[]): FiltredVacancyList[] {
+  const dataDateFilter: { date: string; vacancy: Vacancy[] }[] = []
   const result: Result = data.reduce((res, el) => {
     const dateKey = el.published_at.split('T')[0]
     if (res[dateKey]) {

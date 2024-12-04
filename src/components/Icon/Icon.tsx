@@ -1,3 +1,4 @@
+import { IconProps } from '@props'
 import {
   ArrowIcon,
   BagIcon,
@@ -18,9 +19,9 @@ import {
   CheckboxIcon,
   RadioActiveIcon,
   RadioIcon
-} from '../UI/Icons'
+} from '@components/UI/Icons'
 
-export const Icon = ({ className, name, ...props }) => {
+export const Icon = ({ className, name, ...props }: IconProps) => {
   switch (name) {
     case 'arrow':
       return <ArrowIcon className={className} {...props} />

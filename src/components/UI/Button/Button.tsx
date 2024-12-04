@@ -1,11 +1,11 @@
-import styles from './button.module.css'
-import { ButtonProps } from './Button.props'
+import { ButtonProps } from '@props'
 
 import cn from 'classnames'
+import styles from './button.module.css'
 
 export const Button = ({ children, className, ...props }: ButtonProps) => {
   return (
-    <button className={cn(styles.button, className)} {...props}>
+    <button className={cn(className, styles.button)} {...props}>
       {children}
     </button>
   )

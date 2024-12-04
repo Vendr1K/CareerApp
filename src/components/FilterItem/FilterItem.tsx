@@ -1,7 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react'
-import { Icon, Dropdown } from '..'
+
+import { FilterItemProps } from '@props'
+import { Button, Dropdown, Icon } from '@components'
 import { useClickOutside } from '@/hooks'
-import { Button } from '@/components/UI'
 
 import styles from './filterItem.module.css'
 
@@ -16,7 +17,7 @@ export const FilterItem = ({
   setData,
   radioValue,
   setRadioValue
-}: any) => {
+}: FilterItemProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -42,7 +43,7 @@ export const FilterItem = ({
 
   return (
     <li className={styles.item}>
-      <Dropdown setIsDropdownOpen={setIsDropdownOpen} ref={dropdownRef}>
+      <Dropdown ref={dropdownRef}>
         <Button
           className={`${styles.button} ${isDropdownOpen ? styles.open : ''} ${recursion && styles.recursion}`}
           onClick={() => {
@@ -61,7 +62,7 @@ export const FilterItem = ({
           >
             <ul className={styles.list}>
               {option?.type === 'radio' &&
-                option?.filterOption?.map(item => {
+                option?.filterOptions?.map(item => {
                   return (
                     <li className={styles.itemDrop} key={item.id}>
                       <label className={styles.label}>
@@ -82,7 +83,7 @@ export const FilterItem = ({
                   )
                 })}
               {option?.type === 'checkbox' &&
-                option?.filterOption?.map(item => {
+                option?.filterOptions?.map(item => {
                   return (
                     <li className={styles.itemDrop} key={item.id}>
                       <label className={styles.label}>
@@ -111,7 +112,6 @@ export const FilterItem = ({
                     icon={filter.icon}
                     text={filter.text}
                     option={filter?.filterItem}
-                    list={filter?.filterList}
                     key={filter.id}
                     recursion={true}
                     data={data}

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import {
   Header,
   Footer,
@@ -5,11 +7,10 @@ import {
   Main,
   FilterList,
   VacancyList,
-  SkeletonBlock
+  SkeletonBlock,
+  Container
 } from '@components'
 import { useFrontendVacancyStore } from '@/store'
-import { Container } from '@components/UI'
-import { useEffect } from 'react'
 
 const App = () => {
   const { isLoading, vacancyList, fetchVacancyList } = useFrontendVacancyStore()

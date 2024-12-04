@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import { List, ListItem } from '../UI'
+
+import { NavBarProps } from '@props'
+import { List, ListItem } from '@components'
+
+import cn from 'classnames'
 import styles from './navBar.module.css'
 
-export const NavBar = ({ className }) => {
+export const NavBar = ({ className }: NavBarProps) => {
   const [activeNav, setActiveNav] = useState('vacancy')
 
   const dataBar = [
@@ -19,13 +23,15 @@ export const NavBar = ({ className }) => {
   ]
 
   return (
-    <nav className={`${styles.nav} ${className}`}>
+    <nav className={cn(styles.nav, className)}>
       <List className={styles.list}>
         {dataBar.map(nav => {
           return (
             <ListItem
               key={nav.id}
-              className={`${styles.item} ${nav.navPage === activeNav ? styles.active : ''}`}
+              className={cn(styles.item, {
+                [styles.active]: nav.navPage === activeNav
+              })}
               onClick={() => {
                 setActiveNav(nav.navPage)
               }}

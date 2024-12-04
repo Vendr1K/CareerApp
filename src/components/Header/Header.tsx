@@ -1,5 +1,4 @@
-import { NavBar } from '../NavBar/NavBar'
-import { Logo, Container } from '../UI'
+import { Container, Logo, NavBar } from '@components'
 
 import styles from './header.module.css'
 

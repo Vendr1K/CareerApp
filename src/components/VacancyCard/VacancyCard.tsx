@@ -1,11 +1,12 @@
-import { Icon } from '..'
-import { ListItem } from '../UI'
-import styles from './vacancyCard.module.css'
+import { Icon, ListItem } from '@components'
 
-export const VacancyCard = ({ vacancy }) => {
+import styles from './vacancyCard.module.css'
+import { VacancyCardProps } from '@props'
+
+export const VacancyCard = ({ vacancy }: VacancyCardProps) => {
   const { name, salary, experience, area, employer } = vacancy
 
-  const convertСurrency = cur => {
+  const convertСurrency = (cur: string) => {
     switch (cur) {
       case 'RUR':
         return `₽`
@@ -24,7 +25,12 @@ export const VacancyCard = ({ vacancy }) => {
       </div>
       <span className={styles.price}>
         {salary
-          ? `${(salary.from && `от ${salary.from.toLocaleString()}`) || ''} ${(salary.from && salary.to && '-') || ''} ${(salary.to && `до ${salary.to.toLocaleString()}`) || ''} ${salary.currency ? convertСurrency(salary.currency) : ''}  `
+          ? `
+          ${(salary.from && `от ${salary.from.toLocaleString()}`) || ''} 
+          ${(salary.from && salary.to && '-') || ''} 
+          ${(salary.to && `до ${salary.to.toLocaleString()}`) || ''} 
+          ${salary.currency ? convertСurrency(salary.currency) : ''} 
+          `
           : 'Доход не указан'}
       </span>
       <span className={`${styles.text} ${styles.company}`}>

@@ -1,4 +1,5 @@
-import { List, ListItem, Skeleton } from '../UI'
+import { List, ListItem, Skeleton } from '@components'
+
 import styles from './skeletonBlock.module.css'
 
 export const SkeletonBlock = () => {

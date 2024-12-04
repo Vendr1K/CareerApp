@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { daysApiFilter } from '../utils'
-import { vacancy, VacancyStore } from '@models'
+import { Vacancy, VacancyStore } from '@models'
 
 export const useFrontendVacancyStore = create<VacancyStore>()(set => ({
   vacancyList: [],
@@ -16,13 +16,13 @@ export const useFrontendVacancyStore = create<VacancyStore>()(set => ({
         throw new Error('Отсутствует связь со сторонним сервисом')
       }
       const data = await response.json()
-      const vacancyListData: vacancy[] = data.items
+      const vacancyListData: Vacancy[] = data.items
         .sort(
-          (a: vacancy, b: vacancy) =>
+          (a: Vacancy, b: Vacancy) =>
             new Date(b.published_at).getTime() -
             new Date(a.published_at).getTime()
         )
-        .map((item: vacancy) => {
+        .map((item: Vacancy) => {
           const { name, salary, area, published_at, experience, employer, id } =
             item
           return {

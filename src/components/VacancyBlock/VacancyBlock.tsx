@@ -1,8 +1,9 @@
-import { List, ListItem, Skeleton } from '../UI'
-import { VacancyCard } from '../VacancyCard/VacancyCard'
+import { VacancyBlockProps } from '@props'
+import { List, ListItem, VacancyCard } from '@components'
+
 import styles from './vacancyBlock.module.css'
 
-export const VacancyBlock = ({ title, vacancy }) => {
+export const VacancyBlock = ({ title, vacancy }: VacancyBlockProps) => {
   const localDate = new Date()
   const publishedDate = new Date(title)
   return (
@@ -18,7 +19,6 @@ export const VacancyBlock = ({ title, vacancy }) => {
           month: 'long'
         })}
         <>
-          {' '}
           {publishedDate.getFullYear() !== localDate.getFullYear() &&
             localDate.getFullYear()}
         </>
