@@ -4,6 +4,8 @@ import { FilterItemProps } from '@props'
 import { Button, Dropdown, Icon } from '@components'
 import { useClickOutside } from '@/hooks'
 
+import cn from 'classnames'
+
 import styles from './filterItem.module.css'
 
 export const FilterItem = ({
@@ -45,7 +47,10 @@ export const FilterItem = ({
     <li className={styles.item}>
       <Dropdown ref={dropdownRef}>
         <Button
-          className={`${styles.button} ${isDropdownOpen ? styles.open : ''} ${recursion && styles.recursion}`}
+          className={cn(styles.button, {
+            [styles.open]: isDropdownOpen,
+            [styles.recursion]: recursion
+          })}
           onClick={() => {
             setIsDropdownOpen(() => (isDropdownOpen ? false : true))
           }}
