@@ -1,11 +1,11 @@
 import { ChangeEvent, useRef, useState } from 'react'
 
 import { FilterItemProps } from '@props'
-import { Button, Dropdown, Icon } from '@components'
-import { useClickOutside } from '@/hooks'
+import { Dropdown, Icon } from '@components'
+import { Button } from '@components/UI'
+import { useClickOutside } from '@hooks'
 
 import cn from 'classnames'
-
 import styles from './filterItem.module.css'
 
 export const FilterItem = ({

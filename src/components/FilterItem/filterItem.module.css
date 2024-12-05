@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.item .button {
+.button {
   display: flex;
   padding: 16px 24px;
   box-shadow: var(--box-shadow);

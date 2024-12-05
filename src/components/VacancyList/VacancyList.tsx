@@ -1,6 +1,8 @@
-import { List, VacancyBlock } from '@components'
-import styles from './vacancyList.module.css'
 import { VacancyListProps } from '@props'
+import { VacancyBlock } from '@components'
+import { List } from '@components/UI'
+
+import styles from './vacancyList.module.css'
 
 export const VacancyList = ({ data }: VacancyListProps) => {
   return (

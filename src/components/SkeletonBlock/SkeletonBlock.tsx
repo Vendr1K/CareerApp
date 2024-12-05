@@ -1,4 +1,4 @@
-import { List, ListItem, Skeleton } from '@components'
+import { List, ListItem, Skeleton } from '@components/UI'
 
 import styles from './skeletonBlock.module.css'
 

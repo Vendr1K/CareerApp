@@ -1,5 +1,6 @@
 import { VacancyBlockProps } from '@props'
-import { List, ListItem, VacancyCard } from '@components'
+import { VacancyCard } from '@components'
+import { List, ListItem } from '@components/UI'
 
 import styles from './vacancyBlock.module.css'
 

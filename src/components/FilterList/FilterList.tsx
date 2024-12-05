@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 import { Nullable } from '@types'
-import { Button, FilterItem, Icon, List } from '@components'
+import { FilterItem, Icon } from '@components'
+import { Button, List } from '@components/UI'
 import { dataAdditionalFilter, bagDataFilter } from '@constans'
 
 import styles from './filterList.module.css'
