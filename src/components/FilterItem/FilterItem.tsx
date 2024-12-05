@@ -57,7 +57,7 @@ export const FilterItem = ({
     setMaxScrollWrapperHeight(
       Math.floor(window.innerHeight - rect.top - INNER_DESKTOP_OFFSET)
     )
-  }, [scrollWrapperRef.current?.getBoundingClientRect().height])
+  }, [scrollWrapperRef.current])
 
   return (
     <li className={styles.item}>
