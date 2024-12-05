@@ -1,5 +1,5 @@
 import { LogoProps } from '@props'
-import { Link } from '@components'
+import { Link } from '@components/UI'
 
 import cn from 'classnames'
 import styles from './logo.module.css'

@@ -7,9 +7,9 @@ import {
   Main,
   FilterList,
   VacancyList,
-  SkeletonBlock,
-  Container
+  SkeletonBlock
 } from '@components'
+import { Container } from '@components/UI'
 import { useFrontendVacancyStore } from '@/store'
 
 const App = () => {

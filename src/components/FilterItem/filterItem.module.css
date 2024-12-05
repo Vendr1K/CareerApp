@@ -3,20 +3,19 @@
   position: relative;
 }
 
-.item .button {
+.button {
   display: flex;
   padding: 16px 24px;
   box-shadow: var(--box-shadow);
-  background-color: var(--background);
+  background-color: var(--neutral-100);
   width: 100%;
   border-radius: var(--border-radius);
   gap: 16px;
   transition: background-color 0.2s ease;
 }
 
-.button.open,
 .button:hover {
-  background-color: var(--primary-secondary);
+  background-color: var(--primary-100);
   transition: background-color 0.2s ease;
 }
 
@@ -29,12 +28,12 @@
 }
 
 .button.open .text {
-  color: var(--text);
+  color: var(--neutral-800);
   transition: color 0.2s ease;
 }
 
 .button.open .icon path {
-  fill: var(--text);
+  fill: var(--neutral-800);
   transition: fill 0.2s ease;
 }
 
@@ -76,7 +75,7 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;
-  color: var(--text-secondary);
+  color: var(--neutral-600);
   margin-right: auto;
   transition: color 0.2s ease;
 }
@@ -88,15 +87,31 @@
   top: 42px;
   width: 100%;
   height: auto;
-  background-color: var(--background);
+  overflow-y: auto;
+  background-color: var(--neutral-100);
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
+  /* scrollbar-gutter: stable; */
+}
+
+.optionWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+.optionWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.optionWrapper::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: var(--primary-400);
 }
 
 .optionWrapper.relative {
   position: relative;
   top: auto;
   left: auto;
+  max-height: none;
+  height: auto;
+  border-radius: 0;
 }
 
 .list {
@@ -105,6 +120,13 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--box-shadow);
+
+  overflow: hidden;
+}
+
+.listBorder {
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .itemDrop {
@@ -114,12 +136,14 @@
 .label {
   display: flex;
   position: relative;
-  background-color: var(--background);
+  background-color: var(--neutral-100);
   width: 100%;
   gap: 16px;
   align-items: center;
-  padding: 16px 24px;
+  padding: 8px 24px;
   cursor: pointer;
+  font-size: 12px;
+  line-height: 133%;
 }
 
 .radio,

@@ -1,11 +1,13 @@
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 import { FilterItemProps } from '@props'
-import { Button, Dropdown, Icon } from '@components'
-import { useClickOutside } from '@/hooks'
+import { Nullable } from '@types'
+import { INNER_DESKTOP_OFFSET } from '@constans'
+import { Dropdown, Icon } from '@components'
+import { Button } from '@components/UI'
+import { useClickOutside } from '@hooks'
 
 import cn from 'classnames'
-
 import styles from './filterItem.module.css'
 
 export const FilterItem = ({
@@ -21,7 +23,11 @@ export const FilterItem = ({
   setRadioValue
 }: FilterItemProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [maxScrollWrapperHeight, setMaxScrollWrapperHeight] =
+    useState<Nullable<number>>(null)
+
+  const dropdownRef = useRef<Nullable<HTMLDivElement>>(null)
+  const scrollWrapperRef = useRef<Nullable<HTMLDivElement>>(null)
 
   const toggleCheckboxes = (e: ChangeEvent<HTMLInputElement>) => {
     const index = data.indexOf(e.target.value)
@@ -43,6 +49,16 @@ export const FilterItem = ({
     }
   })
 
+  useEffect(() => {
+    if (recursion) return
+    if (!scrollWrapperRef.current) return
+
+    const rect = scrollWrapperRef.current?.getBoundingClientRect()
+    setMaxScrollWrapperHeight(
+      Math.floor(window.innerHeight - rect.top - INNER_DESKTOP_OFFSET)
+    )
+  }, [scrollWrapperRef.current?.getBoundingClientRect().height])
+
   return (
     <li className={styles.item}>
       <Dropdown ref={dropdownRef}>
@@ -63,9 +79,15 @@ export const FilterItem = ({
         {/* dropdown open params */}
         {isDropdownOpen && (
           <div
-            className={`${styles.optionWrapper} ${recursion ? styles.relative : ''}`}
+            ref={scrollWrapperRef}
+            style={{ maxHeight: maxScrollWrapperHeight ?? undefined }}
+            className={cn(styles.optionWrapper, {
+              [styles.relative]: recursion
+            })}
           >
-            <ul className={styles.list}>
+            <ul
+              className={cn(styles.list, { [styles.listBorder]: !recursion })}
+            >
               {option?.type === 'radio' &&
                 option?.filterOptions?.map(item => {
                   return (

@@ -6,5 +6,5 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: var(--background-page);
+  background-color: var(--neutral-500);
 }

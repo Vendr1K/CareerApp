@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { NavBarProps } from '@props'
-import { List, ListItem } from '@components'
+import { List, ListItem } from '@components/UI'
 
 import cn from 'classnames'
 import styles from './navBar.module.css'

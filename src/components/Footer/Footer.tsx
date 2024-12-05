@@ -1,4 +1,4 @@
-import { Container, Link } from '@components'
+import { Container, Link } from '@components/UI'
 
 import styles from './footer.module.css'
 

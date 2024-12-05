@@ -1,7 +1,8 @@
-import { Icon, ListItem } from '@components'
+import { VacancyCardProps } from '@props'
+import { Icon } from '@components'
+import { ListItem } from '@components/UI'
 
 import styles from './vacancyCard.module.css'
-import { VacancyCardProps } from '@props'
 
 export const VacancyCard = ({ vacancy }: VacancyCardProps) => {
   const { name, salary, experience, area, employer } = vacancy
