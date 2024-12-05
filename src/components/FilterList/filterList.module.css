@@ -17,9 +17,6 @@
 
 .list {
   display: grid;
-  /* grid-column-start: 2;
-  grid-column-end: 4;
-  grid-template-columns: repeat(2, 1fr); */
   align-items: center;
   gap: 32px;
   list-style: none;
@@ -76,9 +73,6 @@
 }
 
 .clearFilter {
-  /* position: absolute;
-  right: 0;
-  top: 70px; */
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;

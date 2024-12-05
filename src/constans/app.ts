@@ -1,0 +1,1 @@
+export const INNER_DESKTOP_OFFSET = 32

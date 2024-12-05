@@ -14,7 +14,6 @@
   transition: background-color 0.2s ease;
 }
 
-.button.open,
 .button:hover {
   background-color: var(--primary-100);
   transition: background-color 0.2s ease;
@@ -88,15 +87,31 @@
   top: 42px;
   width: 100%;
   height: auto;
+  overflow-y: auto;
   background-color: var(--neutral-100);
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
+  /* scrollbar-gutter: stable; */
+}
+
+.optionWrapper::-webkit-scrollbar {
+  width: 4px;
+}
+.optionWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+.optionWrapper::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: var(--primary-400);
 }
 
 .optionWrapper.relative {
   position: relative;
   top: auto;
   left: auto;
+  max-height: none;
+  height: auto;
+  border-radius: 0;
 }
 
 .list {
@@ -105,6 +120,13 @@
   display: flex;
   flex-direction: column;
   box-shadow: var(--box-shadow);
+
+  overflow: hidden;
+}
+
+.listBorder {
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .itemDrop {
@@ -118,8 +140,10 @@
   width: 100%;
   gap: 16px;
   align-items: center;
-  padding: 16px 24px;
+  padding: 8px 24px;
   cursor: pointer;
+  font-size: 12px;
+  line-height: 133%;
 }
 
 .radio,
