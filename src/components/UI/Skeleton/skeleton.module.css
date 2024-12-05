@@ -4,7 +4,7 @@
   position: relative;
   border-radius: 0;
   overflow: hidden;
-  background: var(--skeleton);
+  background: var(--neutral-300);
 }
 
 .skeleton::after {

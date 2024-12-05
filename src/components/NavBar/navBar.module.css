@@ -17,11 +17,11 @@
   font-size: 14px;
   line-height: 143%;
   transition: color 0.2s ease;
-  color: var(--inactive);
+  color: var(--neutral-400);
   white-space: nowrap;
 }
 
 .active {
-  color: var(--primary);
+  color: var(--primary-400);
   transition: color 0.2s ease;
 }

@@ -41,18 +41,18 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;
-  color: var(--text);
+  color: var(--neutral-800);
   box-shadow: var(--box-shadow);
   background-color: var(--neutral-100);
   padding: 16px 40px 16px 56px;
 }
 
 .input::placeholder {
-  color: var(--text-secondary);
+  color: var(--neutral-600);
 }
 
 .input:focus {
-  background-color: var(--primary-secondary);
+  background-color: var(--primary-100);
 }
 
 .clearIcon,
@@ -72,7 +72,7 @@
 }
 
 .clearIcon:hover path {
-  fill: var(--primary);
+  fill: var(--primary-400);
 }
 
 .clearFilter {
@@ -82,6 +82,6 @@
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;
-  color: var(--primary);
+  color: var(--primary-400);
   cursor: pointer;
 }
