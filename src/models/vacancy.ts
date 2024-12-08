@@ -4,7 +4,10 @@ export interface VacancyStore {
   vacancyList: FiltredVacancyList[]
   error: unknown
   isLoading: boolean
-  fetchVacancyList: () => void
+  fetchVacancyList: (page: number) => void
+  currentPage: number
+  setPage: (newPage: number) => void
+  totalPagesCount: Nullable<number>
 }
 
 export interface Vacancy {

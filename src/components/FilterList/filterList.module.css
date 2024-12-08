@@ -69,13 +69,13 @@
 }
 
 .clearIcon:hover path {
-  fill: var(--primary-400);
+  fill: var(--primary-500);
 }
 
 .clearFilter {
   font-weight: 700;
   font-size: 12px;
   line-height: 133%;
-  color: var(--primary-400);
+  color: var(--primary-500);
   cursor: pointer;
 }

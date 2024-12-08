@@ -1,25 +1,17 @@
-import { useEffect } from 'react'
-
 import {
   Header,
   Footer,
   Layout,
   Main,
   FilterList,
-  VacancyList,
-  SkeletonBlock
+  PaginationVacanciesList
 } from '@components'
 import { Container } from '@components/UI'
-import { useFrontendVacancyStore } from '@/store'
+
 import { usePreventActiveAppElement } from '@hooks'
 
 const App = () => {
-  const { isLoading, vacancyList, fetchVacancyList } = useFrontendVacancyStore()
   usePreventActiveAppElement()
-
-  useEffect(() => {
-    fetchVacancyList()
-  }, [])
 
   return (
     <Layout>
@@ -27,8 +19,7 @@ const App = () => {
       <Main>
         <Container>
           <FilterList />
-          {isLoading && <SkeletonBlock />}
-          {vacancyList.length && <VacancyList data={vacancyList} />}
+          <PaginationVacanciesList />
         </Container>
       </Main>
       <Footer />

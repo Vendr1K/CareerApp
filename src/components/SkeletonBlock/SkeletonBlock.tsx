@@ -1,13 +1,14 @@
 import { List, ListItem, Skeleton } from '@components/UI'
 
 import styles from './skeletonBlock.module.css'
+import { CARD_FOR_PAGE } from '@constans'
 
 export const SkeletonBlock = () => {
   return (
     <div className={styles.wrapper}>
       <Skeleton width={'250px'} height={'32px'} radius={'16px'} />
       <List className={styles.skeletonList}>
-        {Array.from({ length: 21 }, (_, index) => (
+        {Array.from({ length: CARD_FOR_PAGE }, (_, index) => (
           <ListItem className={styles.skeletonItem} key={index}>
             <Skeleton
               width={'225px'}

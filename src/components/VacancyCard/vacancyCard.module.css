@@ -4,7 +4,8 @@
   align-items: flex-start;
   padding: 32px;
   background-color: var(--neutral-100);
-  box-shadow: var(--box-sgadow);
+  box-shadow: var(--box-shadow);
+  min-height: 204px;
   border-radius: var(--border-radius);
   text-overflow: ellipsis;
   transition: box-shadow 0.2s ease;

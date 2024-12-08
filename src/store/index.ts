@@ -1,1 +1,1 @@
-export * from './useFrontendVacancyStore'
+export * from './useVacanciesStore'

@@ -103,7 +103,7 @@
 }
 .optionWrapper::-webkit-scrollbar-thumb {
   border-radius: 7px;
-  background: var(--primary-400);
+  background: var(--primary-500);
 }
 
 .optionWrapper.relative {

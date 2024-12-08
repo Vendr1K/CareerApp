@@ -18,6 +18,7 @@ body {
   --box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.03);
   --box-shadow-hover: 4px 4px 15px 0 rgba(0, 0, 0, 0.08);
   --border-radius: 16px;
+  --background: #f6f6f6;
   --neutral-100: #f9f9f9;
   --neutral-200: #dadada;
   --neutral-300: #e1e1e1;
@@ -26,5 +27,6 @@ body {
   --neutral-600: #747474;
   --neutral-800: #202020;
   --primary-100: #ebf1fa;
-  --primary-400: #5c89ce;
+  --primary-400: #8caee0;
+  --primary-500: #5c89ce;
 }
