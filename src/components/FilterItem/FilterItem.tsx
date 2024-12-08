@@ -2,13 +2,15 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 import { FilterItemProps } from '@props'
 import { Nullable } from '@types'
-import { INNER_DESKTOP_OFFSET } from '@constans'
-import { Dropdown, Icon } from '@components'
+import { INNER_DESKTOP_OFFSET, KEY_CODES_BUTTONS } from '@constans'
+import { Dropdown, FilterCheckbox, FilterRadio, Icon } from '@components'
 import { Button } from '@components/UI'
-import { useClickOutside } from '@hooks'
+import { useClickOutside, useKeyPress } from '@hooks'
 
 import cn from 'classnames'
 import styles from './filterItem.module.css'
+
+const { ESCAPE } = KEY_CODES_BUTTONS
 
 export const FilterItem = ({
   text,
@@ -29,17 +31,17 @@ export const FilterItem = ({
   const dropdownRef = useRef<Nullable<HTMLDivElement>>(null)
   const scrollWrapperRef = useRef<Nullable<HTMLDivElement>>(null)
 
-  const toggleCheckboxes = (e: ChangeEvent<HTMLInputElement>) => {
-    const index = data.indexOf(e.target.value)
+  const toggleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
+    const index = data.indexOf(event.target.value)
     setData(
       index !== -1
         ? [...data.slice(0, index), ...data.slice(index + 1)]
-        : [...data, e.target.value]
+        : [...data, event.target.value]
     )
   }
 
-  const changeRadio = (e: ChangeEvent<HTMLInputElement>) => {
-    setRadioValue(e.target.value)
+  const changeRadio = (value: string) => {
+    setRadioValue(value)
   }
 
   useClickOutside({
@@ -47,6 +49,14 @@ export const FilterItem = ({
     callback: () => {
       setIsDropdownOpen(recursion ? isDropdownOpen : false)
     }
+  })
+
+  useKeyPress({
+    mainKey: ESCAPE,
+    callback: () => {
+      setIsDropdownOpen(recursion ? isDropdownOpen : false)
+    },
+    isActive: isDropdownOpen
   })
 
   useEffect(() => {
@@ -92,20 +102,11 @@ export const FilterItem = ({
                 option?.filterOptions?.map(item => {
                   return (
                     <li className={styles.itemDrop} key={item.id}>
-                      <label className={styles.label}>
-                        <input
-                          type='radio'
-                          value={item.value}
-                          className={styles.radio}
-                          checked={radioValue === item.value ? true : false}
-                          onChange={changeRadio}
-                        />
-                        {radioValue !== item.value && <Icon name={'radio'} />}
-                        {radioValue === item.value && (
-                          <Icon name={'radioActive'} />
-                        )}
-                        <span>{item.value}</span>
-                      </label>
+                      <FilterRadio
+                        changeRadio={changeRadio}
+                        radioValue={radioValue}
+                        value={item.value}
+                      />
                     </li>
                   )
                 })}
@@ -113,22 +114,12 @@ export const FilterItem = ({
                 option?.filterOptions?.map(item => {
                   return (
                     <li className={styles.itemDrop} key={item.id}>
-                      <label className={styles.label}>
-                        <input
-                          type='checkbox'
-                          value={item.value}
-                          className={styles.checkbox}
-                          onChange={toggleCheckboxes}
-                          checked={data.includes(item.value)}
-                        />
-                        {!data.includes(item.value) && (
-                          <Icon name={'checkbox'} />
-                        )}
-                        {data.includes(item.value) && (
-                          <Icon name={'checkboxActive'} />
-                        )}
-                        <span>{item.value}</span>
-                      </label>
+                      <FilterCheckbox
+                        checkboxData={data}
+                        toggleCheckbox={toggleCheckbox}
+                        value={item.value}
+                        setCheckboxData={setData}
+                      />
                     </li>
                   )
                 })}

@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import { daysApiFilter } from '../utils'
 import { Vacancy, VacancyStore } from '@models'
+import { daysApiFilter } from '@utils'
 
 export const useFrontendVacancyStore = create<VacancyStore>()(set => ({
   vacancyList: [],

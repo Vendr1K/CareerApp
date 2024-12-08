@@ -11,9 +11,11 @@ import {
 } from '@components'
 import { Container } from '@components/UI'
 import { useFrontendVacancyStore } from '@/store'
+import { usePreventActiveAppElement } from '@hooks'
 
 const App = () => {
   const { isLoading, vacancyList, fetchVacancyList } = useFrontendVacancyStore()
+  usePreventActiveAppElement()
 
   useEffect(() => {
     fetchVacancyList()

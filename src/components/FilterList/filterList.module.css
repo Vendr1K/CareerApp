@@ -32,8 +32,8 @@
 
 .input {
   width: 100%;
-  border: none;
   border-radius: var(--border-radius);
+  border: none;
   outline: none;
   font-weight: 700;
   font-size: 12px;
