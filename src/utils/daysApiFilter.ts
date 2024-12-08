@@ -1,7 +1,7 @@
 import { MapType } from '@types'
 import { FiltredVacancyList, Vacancy } from '@models'
 
-export function daysApiFilter(data: Vacancy[]): FiltredVacancyList[] {
+export const daysApiFilter = (data: Vacancy[]): FiltredVacancyList[] => {
   const dataDateFilter: { date: string; vacancy: Vacancy[] }[] = []
   const result: MapType<Vacancy> = data.reduce((res, el) => {
     const dateKey = el.published_at.split('T')[0]

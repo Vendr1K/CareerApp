@@ -1,5 +1,7 @@
 export * from '@components/Dropdown/Dropdown.props'
 export * from '@components/FilterItem/FilterItem.props'
+export * from '@components/FilterItem/FilterRadio/FilterRadio.props'
+export * from '@components/FilterItem/FilterCheckbox/FilterCheckbox.props'
 export * from '@components/Main/Main.props'
 export * from '@components/Layout/Layout.props'
 export * from '@components/NavBar/NavBar.props'
