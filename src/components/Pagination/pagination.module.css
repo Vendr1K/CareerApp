@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  gap: 8px;
+}
+
+.item {
+  text-align: center;
+  color: var(--neutral-800);
+  padding: 12px;
+  min-width: 53px;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  text-align: center;
+  color: var(--neutral-800);
+  padding: 12px;
+  min-width: 53px;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-100);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-400);
+  color: var(--neutral-100);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.active {
+  background-color: var(--primary-500);
+  color: var(--neutral-100);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.disabled {
+  pointer-events: none;
+}
