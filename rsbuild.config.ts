@@ -15,7 +15,8 @@ export default defineConfig({
       '@/props': './src/props',
       '@/store': './src/store',
       '@/utils': './src/utils',
-      '@/types': './src/types'
+      '@/types': './src/types',
+      '@/pages': './src/pages'
     }
   }
 })
