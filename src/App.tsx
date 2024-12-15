@@ -1,19 +1,26 @@
-import { APP_PAGE } from '@constans'
-import { Vacancy, Vacansies } from '@pages'
-import { Header, Footer, Layout, Main } from '@components'
+import {
+  Header,
+  Footer,
+  Layout,
+  Main,
+  FilterList,
+  PaginationVacanciesList
+} from '@components'
+import { Container } from '@components/UI'
 
-import { usePreventActiveAppElement, useRoute } from '@hooks'
+import { usePreventActiveAppElement } from '@hooks'
 
 const App = () => {
   usePreventActiveAppElement()
-  const { path } = useRoute()
 
   return (
     <Layout>
       <Header />
       <Main>
-        {path === APP_PAGE.main && <Vacansies />}
-        {path === APP_PAGE.vacancy && <Vacancy />}
+        <Container>
+          <FilterList />
+          <PaginationVacanciesList />
+        </Container>
       </Main>
       <Footer />
     </Layout>

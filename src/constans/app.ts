@@ -16,8 +16,3 @@ export enum KEY_CODES_BUTTONS {
   ARROW_DOWN = 'ArrowDown',
   ARROW_UP = 'ArrowUp'
 }
-
-export const APP_PAGE = {
-  main: '/vacancies',
-  vacancy: '/vacancy'
-}

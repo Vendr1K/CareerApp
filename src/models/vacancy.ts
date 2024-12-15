@@ -1,18 +1,10 @@
 import { Nullable } from '@types'
 
-export type RequestVacanciesType = {
-  alternate_url: string
-  page: number
-  pages: number
-  items: Vacancy[]
-  per_page: number
-}
-
 export interface VacancyStore {
-  vacanciesList: FiltredVacancyList[]
-  error: Nullable<Error>
+  vacancyList: FiltredVacancyList[]
+  error: unknown
   isLoading: boolean
-  fetchVacancies: (page: number) => void
+  fetchVacancyList: (page: number) => void
   currentPage: number
   setPage: (newPage: number) => void
   totalPagesCount: Nullable<number>

@@ -1,4 +1,4 @@
-import { Pagination, SkeletonBlock, VacanciesList } from '@components'
+import { Pagination, SkeletonBlock, VacancyList } from '@components'
 
 import { useVacanciesStore } from '@store'
 import { useEffect } from 'react'
@@ -6,25 +6,22 @@ import { useEffect } from 'react'
 export const PaginationVacanciesList = () => {
   const {
     isLoading,
-    vacanciesList,
-    fetchVacancies,
+    vacancyList,
+    fetchVacancyList,
     totalPagesCount,
     currentPage,
-    setPage,
-    error
+    setPage
   } = useVacanciesStore()
 
   useEffect(() => {
-    fetchVacancies(currentPage)
+    fetchVacancyList(currentPage)
   }, [currentPage])
+
   return (
     <>
       {isLoading && <SkeletonBlock />}
-      {error && <>{error.message}</>}
-      {!!vacanciesList.length && !isLoading && (
-        <VacanciesList data={vacanciesList} />
-      )}
-      {!!vacanciesList.length && totalPagesCount && totalPagesCount > 1 && (
+      {!!vacancyList.length && !isLoading && <VacancyList data={vacancyList} />}
+      {!!vacancyList.length && totalPagesCount && totalPagesCount > 1 && (
         <Pagination
           currentPage={currentPage}
           disabled={isLoading}

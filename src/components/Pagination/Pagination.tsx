@@ -26,8 +26,7 @@ export const Pagination = ({
           ) : (
             <Button
               className={cn(styles.btn, {
-                [styles.active]: pageNumber === currentPage,
-                [styles.disabled]: disabled
+                [styles.active]: pageNumber === currentPage
               })}
               onClick={() => setPage(Number(pageNumber))}
               disabled={disabled}
