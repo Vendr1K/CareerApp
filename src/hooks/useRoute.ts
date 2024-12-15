@@ -28,7 +28,6 @@ export const useRoute = () => {
   }
 
   useEffect(() => {
-    console.log(path)
     if (path === '/') {
       navigate(APP_PAGE.main)
     }

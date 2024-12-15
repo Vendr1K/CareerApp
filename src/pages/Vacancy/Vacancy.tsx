@@ -1,9 +1,8 @@
-import { Container } from '@components/UI'
+import { Button, Container } from '@components/UI'
 
 import { APP_PAGE } from '@constans'
 import { useRoute } from '@hooks'
 
-import cn from 'classnames'
 import styles from './Vacancy.module.css'
 
 export const Vacancy = () => {
@@ -11,12 +10,12 @@ export const Vacancy = () => {
 
   return (
     <Container>
-      <button
-        className={cn(styles.btn, styles.back)}
+      <Button
+        className={styles.backBtn}
         onClick={() => navigate(APP_PAGE.main)}
       >
         К результатам поиска
-      </button>
+      </Button>
     </Container>
   )
 }

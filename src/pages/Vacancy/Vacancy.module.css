@@ -1,17 +1,11 @@
-.btn {
-  display: flex;
-  gap: 16px;
+.backBtn {
   font-weight: 700;
   font-size: 14px;
   line-height: 143%;
-  align-items: center;
-  margin-bottom: 32px;
   color: var(--primary-500);
-  background-color: transparent;
-  border: none;
   cursor: pointer;
 }
 
-.back:hover {
+.backBtn:hover {
   color: var(--primary-400);
 }

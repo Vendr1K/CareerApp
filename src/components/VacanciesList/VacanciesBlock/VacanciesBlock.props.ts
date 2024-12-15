@@ -1,6 +1,6 @@
 import { Vacancy } from '@models'
 
-export interface VacancyBlockProps {
+export interface VacanciesBlockProps {
   title: string
   vacancy: Vacancy[]
 }

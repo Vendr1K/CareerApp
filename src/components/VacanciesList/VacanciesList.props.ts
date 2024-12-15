@@ -1,5 +1,5 @@
 import { FiltredVacancyList } from '@models'
 
-export interface VacancyListProps {
+export interface VacanciesListProps {
   data: FiltredVacancyList[]
 }
