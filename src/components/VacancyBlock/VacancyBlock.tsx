@@ -1,10 +1,10 @@
-import { VacanciesBlockProps } from '@props'
+import { VacancyBlockProps } from '@props'
 import { VacancyCard } from '@components'
 import { List, ListItem } from '@components/UI'
 
-import styles from './vacanciesBlock.module.css'
+import styles from './vacancyBlock.module.css'
 
-export const VacanciesBlock = ({ title, vacancy }: VacanciesBlockProps) => {
+export const VacancyBlock = ({ title, vacancy }: VacancyBlockProps) => {
   const localDate = new Date()
   const publishedDate = new Date(title)
   return (
