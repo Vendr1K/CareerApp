@@ -21,12 +21,7 @@ export interface VacancyStore {
 export interface Vacancy {
   name: string
   published_at: string
-  salary: {
-    currency: string
-    from: Nullable<number>
-    gross: boolean
-    to: Nullable<number>
-  }
+  salary: Salary
   area: {
     id: string
     name: string
@@ -43,7 +38,33 @@ export interface Vacancy {
   id: string
 }
 
+export interface DetailVacancy {
+  id: number
+  name: string
+  salary: Salary
+  location: Nullable<string>
+  requirements: [
+    { name: Nullable<string>; icon: 'star' },
+    { name: Nullable<string>; icon: 'bag' },
+    { name: Nullable<string>; icon: 'time' }
+  ]
+  description: Nullable<string>
+  key_skills: { name: string }[]
+  area: Nullable<string>
+  published_at: string
+  company: Nullable<string>
+  address?: Nullable<string>
+  logo: Nullable<string>
+}
+
 export interface FiltredVacancyList {
   date: string
   vacancy: Vacancy[]
+}
+
+export interface Salary {
+  currency: string
+  from: Nullable<number>
+  gross: boolean
+  to: Nullable<number>
 }
