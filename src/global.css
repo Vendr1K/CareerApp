@@ -30,3 +30,38 @@ body {
   --primary-400: #8caee0;
   --primary-500: #5c89ce;
 }
+
+img,
+svg {
+  display: block;
+}
+
+img {
+  object-fit: cover;
+}
+ul,
+li {
+  list-style: none;
+}
+
+.btn {
+  padding: 0;
+  border: none;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  color: var(--neutral-800);
+}
+h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--neutral-800);
+}

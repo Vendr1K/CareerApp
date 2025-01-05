@@ -19,9 +19,9 @@ export const VacanciesBlock = ({ title, vacancy }: VacanciesBlockProps) => {
           day: 'numeric',
           month: 'long'
         })}
-        <>
+        <>{' '}
           {publishedDate.getFullYear() !== localDate.getFullYear() &&
-            localDate.getFullYear()}
+            publishedDate.getFullYear()}
         </>
       </h2>
       <List className={styles.list}>

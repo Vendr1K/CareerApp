@@ -1,11 +1,27 @@
 .backBtn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   font-weight: 700;
   font-size: 14px;
   line-height: 143%;
   color: var(--primary-500);
-  cursor: pointer;
+  margin: 32px 0;
+}
+
+.icon {
+  width: 8px;
+  height: 14px;
+  transform: rotate(180deg);
+}
+.icon path {
+  fill: var(--primary-500);
 }
 
 .backBtn:hover {
   color: var(--primary-400);
+}
+
+.backBtn:hover .icon path {
+  fill: var(--primary-400);
 }
