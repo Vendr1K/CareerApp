@@ -1,7 +1,6 @@
 import { useState } from 'react'
-
 import { Nullable } from '@types'
-import { FilterItem, Icon } from '@components'
+import { Areas, FilterItem } from '@components'
 import { Button, List } from '@components/UI'
 import { dataAdditionalFilter, bagDataFilter } from '@constans'
 
@@ -9,34 +8,18 @@ import styles from './filterList.module.css'
 
 export const FilterList = () => {
   const [data, setData] = useState([''])
-  const [inputValue, setInputValue] = useState('')
   const [radioValue, setRadioValue] = useState<Nullable<string>>(null)
 
+  // into storeParams 
   const clear = () => {
     setData([''])
-    setInputValue('')
     setRadioValue(null)
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperFilter}>
-        <label className={styles.label}>
-          <input
-            className={styles.input}
-            value={inputValue}
-            onChange={e => setInputValue(e.target.value)}
-            placeholder='Город'
-          />
-          <Icon className={styles.extraIcon} name={'location'} />
-          {inputValue && (
-            <Icon
-              className={styles.clearIcon}
-              onClick={() => setInputValue('')}
-              name={'clear'}
-            />
-          )}
-        </label>
+        <Areas />
         <List className={styles.list}>
           {bagDataFilter.map(filter => {
             return (
@@ -75,6 +58,6 @@ export const FilterList = () => {
       <Button className={styles.clearFilter} onClick={clear}>
         Сбросить все фильтры
       </Button>
-    </div>
+    </div >
   )
 }

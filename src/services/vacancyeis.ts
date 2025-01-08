@@ -11,8 +11,11 @@ interface CustomError extends Error {
 export const fetchVacancies = async (
   currentPage: number
 ): Promise<VacanciesResponse> => {
+  // only area
+  const searchParams = new URLSearchParams(window.location.search).toString()
+
   const response = await fetch(
-    `${VACANCIES}?${QUERY_FRONTEND}${MOCK_QUERY}&per_page=${CARD_FOR_PAGE}&page=${currentPage - 1}`
+    `${VACANCIES}?${QUERY_FRONTEND}${MOCK_QUERY}&per_page=${CARD_FOR_PAGE}&page=${currentPage - 1}${searchParams ? '&' + searchParams : ''}`
   )
 
   if (!response.ok) {

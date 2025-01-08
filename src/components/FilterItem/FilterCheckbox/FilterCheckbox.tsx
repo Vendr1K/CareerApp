@@ -1,32 +1,25 @@
 import { useRef } from 'react'
-
+import { Nullable } from '@types'
+import { KEY_CODES_BUTTONS } from '@constans'
 import { FilterCheckboxProps } from '@props'
 import { Icon } from '@components'
 
 import styles from './filterCheckbox.module.css'
-import { Nullable } from '@types'
-import { KEY_CODES_BUTTONS } from '@constans'
 
 const { ENTER } = KEY_CODES_BUTTONS
 
 export const FilterCheckbox = ({
+  id,
   value,
   checkboxData,
-  toggleCheckbox,
-  setCheckboxData
+  toggleCheckbox
 }: FilterCheckboxProps) => {
   const checkboxRef = useRef<Nullable<HTMLLabelElement>>(null)
   const handleEnterPressCheckbox = (
     event: React.KeyboardEvent<HTMLLabelElement>,
-    value: string
   ) => {
     if (event.key === ENTER && document.activeElement === checkboxRef.current) {
-      const index = checkboxData.indexOf(value)
-      setCheckboxData(
-        index !== -1
-          ? [...checkboxData.slice(0, index), ...checkboxData.slice(index + 1)]
-          : [...checkboxData, value]
-      )
+      toggleCheckbox()
     }
   }
   return (
@@ -34,18 +27,18 @@ export const FilterCheckbox = ({
       className={styles.label}
       tabIndex={0}
       ref={checkboxRef}
-      onKeyDown={event => handleEnterPressCheckbox(event, value)}
+      onKeyDown={event => handleEnterPressCheckbox(event)}
     >
       <input
         type='checkbox'
         value={value}
         className={styles.checkbox}
         onChange={toggleCheckbox}
-        checked={checkboxData.includes(value)}
+        checked={checkboxData.includes(id)}
         tabIndex={-1}
       />
-      {!checkboxData.includes(value) && <Icon name={'checkbox'} />}
-      {checkboxData.includes(value) && <Icon name={'checkboxActive'} />}
+      {!checkboxData.includes(id) && <Icon name={'checkbox'} className={styles.icon} />}
+      {checkboxData.includes(id) && <Icon name={'checkboxActive'} className={styles.icon} />}
       <span>{value}</span>
     </label>
   )

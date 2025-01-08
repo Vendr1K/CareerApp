@@ -31,13 +31,7 @@ export const FilterItem = ({
   const dropdownRef = useRef<Nullable<HTMLDivElement>>(null)
   const scrollWrapperRef = useRef<Nullable<HTMLDivElement>>(null)
 
-  const toggleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-    const index = data.indexOf(event.target.value)
-    setData(
-      index !== -1
-        ? [...data.slice(0, index), ...data.slice(index + 1)]
-        : [...data, event.target.value]
-    )
+  const toggleCheckbox = () => {
   }
 
   const changeRadio = (value: string) => {
@@ -117,7 +111,9 @@ export const FilterItem = ({
                       <FilterCheckbox
                         checkboxData={data}
                         toggleCheckbox={toggleCheckbox}
+                        // todo with ID
                         value={item.value}
+                        id={item.value}
                         setCheckboxData={setData}
                       />
                     </li>

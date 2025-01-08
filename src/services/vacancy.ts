@@ -1,9 +1,8 @@
+import { DETAIL_VACANCY_API } from '@constans'
 import { DetailVacancy } from '@models'
 
-const API_URL = 'https://api.hh.ru/vacancies'
-
 export const fetchDetailVacancyInfo = async (vacancyId: number | string) => {
-  const response = await fetch(`${API_URL}/${vacancyId}`)
+  const response = await fetch(`${DETAIL_VACANCY_API}/${vacancyId}`)
   if (!response.ok) throw new Error('Ошибка при загрузке вакансии')
   const result = await response.json()
   return formatDetailVacancy(result)

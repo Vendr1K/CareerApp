@@ -24,54 +24,6 @@
   margin: 0;
 }
 
-.label {
-  position: relative;
-  display: block;
-  width: 100%;
-}
-
-.input {
-  width: 100%;
-  border-radius: var(--border-radius);
-  border: none;
-  outline: none;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 133%;
-  color: var(--neutral-800);
-  box-shadow: var(--box-shadow);
-  background-color: var(--neutral-100);
-  padding: 16px 40px 16px 56px;
-}
-
-.input::placeholder {
-  color: var(--neutral-600);
-}
-
-.input:focus {
-  background-color: var(--primary-100);
-}
-
-.clearIcon,
-.extraIcon {
-  position: absolute;
-  height: 100%;
-  bottom: 0;
-  cursor: pointer;
-}
-
-.extraIcon {
-  left: 24px;
-}
-
-.clearIcon {
-  right: 24px;
-}
-
-.clearIcon:hover path {
-  fill: var(--primary-500);
-}
-
 .clearFilter {
   font-weight: 700;
   font-size: 12px;

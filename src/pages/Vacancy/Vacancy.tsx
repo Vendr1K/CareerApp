@@ -11,17 +11,15 @@ import styles from './Vacancy.module.css'
 
 export const Vacancy = () => {
   const [vacancyData, setVacancyData] = useState<Nullable<DetailVacancy>>(null)
-  {/* dev */ }
   const [isLoading, setIsLoading] = useState(true)
 
-  const { navigate } = useRoute()
+  const { navigate, goBack } = useRoute()
   const vacancyId = new URLSearchParams(window.location.search).get('id')
   useEffect(() => {
     if (!vacancyId) {
       navigate(APP_PAGE.main);
       return;
     }
-    {/* dev */ }
     const fetchVacancy = async () => {
       try {
         setIsLoading(true);
@@ -41,7 +39,7 @@ export const Vacancy = () => {
     <Container>
       <Button
         className={styles.backBtn}
-        onClick={() => navigate(APP_PAGE.main)}
+        onClick={goBack}
       >
         <Icon className={styles.icon} name='arrow' />
         <span>К результатам поиска</span>
