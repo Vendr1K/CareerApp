@@ -27,6 +27,12 @@ export const useRoute = () => {
     }
   }
 
+  const removeQueryParams = () => {
+    const url = new URL(window.location.href)
+    url.search = ''
+    window.history.replaceState({}, document.title, url)
+  }
+
   useEffect(() => {
     if (path === '/') {
       navigate(APP_PAGE.main)
@@ -45,6 +51,7 @@ export const useRoute = () => {
     navigate,
     goBack,
     addQueryParam,
-    removeQueryParam
+    removeQueryParam,
+    removeQueryParams
   }
 }

@@ -13,6 +13,7 @@ export const useVacanciesStore = create<VacancyStore>()(set => ({
   fetchVacancies: async currentPage => {
     try {
       set({ isLoading: true })
+      set({ error: null })
 
       const data = await fetchVacancies(currentPage)
 

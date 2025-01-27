@@ -1,4 +1,3 @@
-
 import { Icon } from '@components'
 import { formatDate, formatSalary } from '@utils'
 import { VacancyDetailProps } from '@props'
@@ -25,9 +24,7 @@ export const VacancyDetail = ({ vacancyDetail }: VacancyDetailProps) => {
                   <span>{item.name}</span>
                 </li>
               )
-            }
-
-            )}
+            })}
           </ul>
         </div>
         {/* <button
@@ -70,7 +67,11 @@ export const VacancyDetail = ({ vacancyDetail }: VacancyDetailProps) => {
             </div>
           )}
           <div className={styles.published}>
-            Ваканися опубликована {formatDate({ dateString: vacancyDetail.published_at, full: true }).formatDate}
+            Ваканися опубликована{' '}
+            {
+              formatDate({ dateString: vacancyDetail.published_at, full: true })
+                .formatDate
+            }
             {vacancyDetail.area && ` в г. ${vacancyDetail.area}`}
           </div>
         </div>

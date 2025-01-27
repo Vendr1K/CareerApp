@@ -1,27 +1,36 @@
-import { useState } from 'react'
-import { Nullable } from '@types'
+import { useEffect } from 'react'
 import { Areas, FilterItem } from '@components'
 import { Button, List } from '@components/UI'
-import { dataAdditionalFilter, bagDataFilter } from '@constans'
+import { DATA_ADDITIONAL_FILTER, DATA_BAG_FILTER } from '@constans'
+import { useRoute } from '@hooks'
+import { useVacanciesStore } from '@store'
 
 import styles from './filterList.module.css'
 
 export const FilterList = () => {
-  const [data, setData] = useState([''])
-  const [radioValue, setRadioValue] = useState<Nullable<string>>(null)
+  const { removeQueryParams } = useRoute()
+  const { fetchVacancies } = useVacanciesStore()
 
-  // into storeParams 
   const clear = () => {
-    setData([''])
-    setRadioValue(null)
+    removeQueryParams()
+    fetchVacancies(1)
   }
+
+  useEffect(() => {
+    const onPopState = () => {
+      fetchVacancies(1)
+    }
+
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperFilter}>
         <Areas />
         <List className={styles.list}>
-          {bagDataFilter.map(filter => {
+          {DATA_BAG_FILTER.map(filter => {
             return (
               <FilterItem
                 key={filter.id}
@@ -29,16 +38,12 @@ export const FilterList = () => {
                 icon={filter.icon}
                 text={filter.text}
                 option={filter?.filterItem}
-                data={data}
-                setData={setData}
-                radioValue={radioValue}
-                setRadioValue={setRadioValue}
               />
             )
           })}
         </List>
         <List className={styles.list}>
-          {dataAdditionalFilter.map(filter => {
+          {DATA_ADDITIONAL_FILTER.map(filter => {
             return (
               <FilterItem
                 key={filter.id}
@@ -46,10 +51,6 @@ export const FilterList = () => {
                 icon={filter.icon}
                 text={filter.text}
                 list={filter?.filterList}
-                data={data}
-                setData={setData}
-                radioValue={radioValue}
-                setRadioValue={setRadioValue}
               />
             )
           })}
@@ -58,6 +59,6 @@ export const FilterList = () => {
       <Button className={styles.clearFilter} onClick={clear}>
         Сбросить все фильтры
       </Button>
-    </div >
+    </div>
   )
 }

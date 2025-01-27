@@ -24,10 +24,7 @@ export const VacancyCard = ({ vacancy }: VacancyCardProps) => {
           <h2 className={styles.title}>{name}</h2>
           <Icon className={styles.hideIcon} name={'hide'} />
         </div>
-        <span className={styles.price}>
-
-          {formatSalary(salary)}
-        </span>
+        <span className={styles.price}>{formatSalary(salary)}</span>
         <span className={`${styles.text} ${styles.company}`}>
           {employer.name}
         </span>

@@ -16,7 +16,7 @@ export const FilterCheckbox = ({
 }: FilterCheckboxProps) => {
   const checkboxRef = useRef<Nullable<HTMLLabelElement>>(null)
   const handleEnterPressCheckbox = (
-    event: React.KeyboardEvent<HTMLLabelElement>,
+    event: React.KeyboardEvent<HTMLLabelElement>
   ) => {
     if (event.key === ENTER && document.activeElement === checkboxRef.current) {
       toggleCheckbox()
@@ -37,8 +37,12 @@ export const FilterCheckbox = ({
         checked={checkboxData.includes(id)}
         tabIndex={-1}
       />
-      {!checkboxData.includes(id) && <Icon name={'checkbox'} className={styles.icon} />}
-      {checkboxData.includes(id) && <Icon name={'checkboxActive'} className={styles.icon} />}
+      {!checkboxData.includes(id) && (
+        <Icon name={'checkbox'} className={styles.icon} />
+      )}
+      {checkboxData.includes(id) && (
+        <Icon name={'checkboxActive'} className={styles.icon} />
+      )}
       <span>{value}</span>
     </label>
   )

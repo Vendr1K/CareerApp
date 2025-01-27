@@ -1,5 +1,4 @@
-import { FilterItem, FilterList } from '@models'
-import { Nullable } from '@types'
+import { IFilterItem, FilterList } from '@models'
 
 export interface FilterItemProps
   extends React.DetailedHTMLProps<
@@ -9,11 +8,7 @@ export interface FilterItemProps
   extraIcon: string
   icon: string
   text: string
-  option?: FilterItem
+  option?: IFilterItem
   list?: FilterList[]
-  data: string[]
-  setData: React.Dispatch<React.SetStateAction<string[]>>
-  radioValue: Nullable<string>
-  setRadioValue: React.Dispatch<React.SetStateAction<Nullable<string>>>
   recursion?: boolean
 }
