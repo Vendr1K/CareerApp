@@ -19,7 +19,8 @@ export const VacanciesBlock = ({ title, vacancy }: VacanciesBlockProps) => {
           day: 'numeric',
           month: 'long'
         })}
-        <>{' '}
+        <>
+          {' '}
           {publishedDate.getFullYear() !== localDate.getFullYear() &&
             publishedDate.getFullYear()}
         </>

@@ -12,6 +12,9 @@ body {
   color: var(--neutral-800);
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 :root {

@@ -3,23 +3,18 @@ export interface FilterList {
   text: string
   icon: string
   extraIcon: string
-  filterItem: FilterItem
+  filterItem: IFilterItem
 }
 
-export interface FilterItem {
+export interface IFilterItem {
   type: string
-  filterOptions: {
-    value: string
-    id: string
-  }[]
-}
-
-export interface FilterItem {
-  type: string
+  query: string
   filterOptions: FilterOption[]
 }
 
 export interface FilterOption {
   value: string
   id: string
+  extraQuery?: string
+  extraType?: string
 }

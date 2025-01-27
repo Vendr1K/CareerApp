@@ -21,3 +21,8 @@
   background-color: var(--neutral-200);
   border-radius: 4px;
 }
+
+.icon {
+  min-width: 16px;
+  min-height: 16px;
+}

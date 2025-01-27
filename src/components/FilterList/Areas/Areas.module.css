@@ -1,0 +1,73 @@
+.label {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--neutral-800);
+  box-shadow: var(--box-shadow);
+  background-color: var(--neutral-100);
+  padding: 16px 40px 16px 56px;
+}
+
+.input::placeholder {
+  color: var(--neutral-600);
+}
+
+.input:focus {
+  background-color: var(--primary-100);
+}
+
+.clearIcon,
+.extraIcon {
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.extraIcon {
+  left: 24px;
+}
+
+.clearIcon {
+  right: 24px;
+}
+
+.clearIcon:hover path {
+  fill: var(--primary-500);
+}
+
+.areasList {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 42px;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--neutral-100);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.areasList::-webkit-scrollbar {
+  width: 4px;
+}
+.areasList::-webkit-scrollbar-track {
+  background: transparent;
+}
+.areasList::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: var(--primary-500);
+}

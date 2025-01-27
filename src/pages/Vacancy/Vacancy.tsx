@@ -11,38 +11,33 @@ import styles from './Vacancy.module.css'
 
 export const Vacancy = () => {
   const [vacancyData, setVacancyData] = useState<Nullable<DetailVacancy>>(null)
-  {/* dev */ }
   const [isLoading, setIsLoading] = useState(true)
 
-  const { navigate } = useRoute()
+  const { navigate, goBack } = useRoute()
   const vacancyId = new URLSearchParams(window.location.search).get('id')
   useEffect(() => {
     if (!vacancyId) {
-      navigate(APP_PAGE.main);
-      return;
+      navigate(APP_PAGE.main)
+      return
     }
-    {/* dev */ }
     const fetchVacancy = async () => {
       try {
-        setIsLoading(true);
-        const res = await fetchDetailVacancyInfo(vacancyId);
-        setVacancyData(res);
+        setIsLoading(true)
+        const res = await fetchDetailVacancyInfo(vacancyId)
+        setVacancyData(res)
       } catch (error) {
-        console.error("Ошибка при загрузке вакансии:", error);
+        console.error('Ошибка при загрузке вакансии:', error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    fetchVacancy();
-  }, [vacancyId]);
+    fetchVacancy()
+  }, [vacancyId])
 
   return (
     <Container>
-      <Button
-        className={styles.backBtn}
-        onClick={() => navigate(APP_PAGE.main)}
-      >
+      <Button className={styles.backBtn} onClick={goBack}>
         <Icon className={styles.icon} name='arrow' />
         <span>К результатам поиска</span>
       </Button>

@@ -1,5 +1,11 @@
 import { RequestVacanciesType, Vacancy } from '@models'
-import { VACANCIES, QUERY_FRONTEND, MOCK_QUERY, CARD_FOR_PAGE } from '@constans'
+import {
+  VACANCIES,
+  FRONTEND,
+  CARD_FOR_PAGE,
+  QUERY_SORT,
+  QUERY_TEXT
+} from '@constans'
 
 interface VacanciesResponse {
   totalPages: number
@@ -11,8 +17,21 @@ interface CustomError extends Error {
 export const fetchVacancies = async (
   currentPage: number
 ): Promise<VacanciesResponse> => {
+  const searchParams = new URLSearchParams(window.location.search).toString()
+  const params = new URLSearchParams(searchParams)
+
+  if (params.has(QUERY_TEXT)) {
+    const currentTextValues = params.get(QUERY_TEXT)?.split(' ') || []
+    if (!currentTextValues.includes('frontend')) {
+      currentTextValues.push('frontend')
+    }
+    params.set(QUERY_TEXT, currentTextValues.join(' '))
+  } else {
+    params.set(QUERY_TEXT, FRONTEND)
+  }
+
   const response = await fetch(
-    `${VACANCIES}?${QUERY_FRONTEND}${MOCK_QUERY}&per_page=${CARD_FOR_PAGE}&page=${currentPage - 1}`
+    `${VACANCIES}?${QUERY_SORT}&per_page=${CARD_FOR_PAGE}&page=${currentPage - 1}&${params.toString()}`
   )
 
   if (!response.ok) {

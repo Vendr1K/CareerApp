@@ -1,14 +1,21 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
-
+import { useEffect, useRef, useState } from 'react'
+import { useVacanciesStore } from '@store'
 import { FilterItemProps } from '@props'
-import { Nullable } from '@types'
-import { INNER_DESKTOP_OFFSET, KEY_CODES_BUTTONS } from '@constans'
+
+import {
+  INNER_DESKTOP_OFFSET,
+  KEY_CODES_BUTTONS,
+  NULL_FILTER,
+  QUERY_TEXT
+} from '@constans'
 import { Dropdown, FilterCheckbox, FilterRadio, Icon } from '@components'
 import { Button } from '@components/UI'
+import { IFilterItem } from '@models'
 import { useClickOutside, useKeyPress } from '@hooks'
 
 import cn from 'classnames'
 import styles from './filterItem.module.css'
+import { Nullable } from '@types'
 
 const { ESCAPE } = KEY_CODES_BUTTONS
 
@@ -18,12 +25,12 @@ export const FilterItem = ({
   extraIcon,
   option,
   list,
-  recursion = false,
-  data,
-  setData,
-  radioValue,
-  setRadioValue
+  recursion = false
 }: FilterItemProps) => {
+  const { fetchVacancies } = useVacanciesStore()
+
+  const [filterData, setFilterData] = useState<string[]>(searchFilter(option))
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [maxScrollWrapperHeight, setMaxScrollWrapperHeight] =
     useState<Nullable<number>>(null)
@@ -31,18 +38,85 @@ export const FilterItem = ({
   const dropdownRef = useRef<Nullable<HTMLDivElement>>(null)
   const scrollWrapperRef = useRef<Nullable<HTMLDivElement>>(null)
 
-  const toggleCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-    const index = data.indexOf(event.target.value)
-    setData(
-      index !== -1
-        ? [...data.slice(0, index), ...data.slice(index + 1)]
-        : [...data, event.target.value]
-    )
+  const toggleCheckbox = ({ query, id }: { query: string; id: string }) => {
+    const params = new URLSearchParams(window.location.search)
+    const existingValues =
+      query === QUERY_TEXT
+        ? (params.get(query)?.split(' ') ?? [])
+        : params.getAll(query)
+    const isChecked = existingValues.includes(id)
+
+    if (query === QUERY_TEXT) {
+      if (isChecked) {
+        const newValues = existingValues.filter(filterId => filterId !== id)
+        if (newValues.length === 0) {
+          params.delete(query)
+        } else {
+          params.set(query, newValues.join(' '))
+        }
+        setFilterData(prev => prev.filter(filterId => filterId !== id))
+      } else {
+        existingValues.push(id)
+        params.set(query, existingValues.join(' '))
+        setFilterData(prev => [...prev, id])
+      }
+    } else {
+      if (isChecked) {
+        const newArgs = existingValues.filter(filterId => filterId !== id)
+        params.delete(query)
+        if (newArgs.length) {
+          params.append(query, newArgs.join('+'))
+        }
+        setFilterData(prev => prev.filter(filterId => filterId !== id))
+      } else {
+        params.append(query, id)
+        setFilterData(prev => [...prev, id])
+      }
+    }
+
+    window.history.pushState({}, '', `${window.location.pathname}?${params}`)
+    fetchVacancies(1)
   }
 
-  const changeRadio = (value: string) => {
-    setRadioValue(value)
+  const changeRadio = ({ query, id }: { query: string; id: string }) => {
+    const params = new URLSearchParams(window.location.search)
+
+    if (id === NULL_FILTER) {
+      params.delete(query)
+      setFilterData([NULL_FILTER])
+    } else {
+      if (params.has(query)) {
+        if (params.get(query) !== id) {
+          params.set(query, id)
+          if (filterData.length === 2 && filterData[1] === 'true') {
+            // filterData[1] === 'true' проверка extraType в dataIncomeLvl, единичный случай
+            setFilterData([id, filterData[1]])
+          } else {
+            setFilterData([id])
+          }
+        }
+      } else {
+        params.set(query, id)
+        if (filterData.length === 2 && filterData[1] === 'true') {
+          setFilterData([id, filterData[1]])
+        } else {
+          setFilterData([id])
+        }
+      }
+    }
+
+    window.history.pushState({}, '', `${window.location.pathname}?${params}`)
+    fetchVacancies(1)
   }
+
+  useEffect(() => {
+    const onPopState = () => {
+      setFilterData(searchFilter(option))
+    }
+
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   useClickOutside({
     ref: dropdownRef,
@@ -85,8 +159,6 @@ export const FilterItem = ({
           <span className={styles.text}>{text}</span>
           {extraIcon && <Icon className={styles.icon} name={extraIcon} />}
         </Button>
-
-        {/* dropdown open params */}
         {isDropdownOpen && (
           <div
             ref={scrollWrapperRef}
@@ -102,11 +174,29 @@ export const FilterItem = ({
                 option?.filterOptions?.map(item => {
                   return (
                     <li className={styles.itemDrop} key={item.id}>
-                      <FilterRadio
-                        changeRadio={changeRadio}
-                        radioValue={radioValue}
-                        value={item.value}
-                      />
+                      {item.extraType === 'checkbox' ? (
+                        <FilterCheckbox
+                          checkboxData={filterData}
+                          toggleCheckbox={() =>
+                            toggleCheckbox({
+                              query: item.extraQuery ?? 'option.query',
+                              id: item.id
+                            })
+                          }
+                          value={item.value}
+                          id={item.id}
+                          setCheckboxData={setFilterData}
+                        />
+                      ) : (
+                        <FilterRadio
+                          changeRadio={() => {
+                            changeRadio({ query: option.query, id: item.id })
+                          }}
+                          radioValue={filterData}
+                          value={item.value}
+                          id={item.id}
+                        />
+                      )}
                     </li>
                   )
                 })}
@@ -115,10 +205,13 @@ export const FilterItem = ({
                   return (
                     <li className={styles.itemDrop} key={item.id}>
                       <FilterCheckbox
-                        checkboxData={data}
-                        toggleCheckbox={toggleCheckbox}
+                        checkboxData={filterData}
+                        toggleCheckbox={() =>
+                          toggleCheckbox({ query: option.query, id: item.id })
+                        }
                         value={item.value}
-                        setCheckboxData={setData}
+                        id={item.id}
+                        setCheckboxData={setFilterData}
                       />
                     </li>
                   )
@@ -132,10 +225,6 @@ export const FilterItem = ({
                     option={filter?.filterItem}
                     key={filter.id}
                     recursion={true}
-                    data={data}
-                    setData={setData}
-                    radioValue={radioValue}
-                    setRadioValue={setRadioValue}
                   />
                 )
               })}
@@ -145,4 +234,20 @@ export const FilterItem = ({
       </Dropdown>
     </li>
   )
+}
+
+const searchFilter = (option?: IFilterItem) => {
+  if (!option?.query) return []
+
+  const params = new URLSearchParams(window.location.search)
+  if (params.has(option.query)) {
+    const values =
+      option.query === QUERY_TEXT
+        ? (params.get(option.query)?.split(' ') ?? [])
+        : params.getAll(option.query)
+
+    return values.length > 0 ? values : [NULL_FILTER]
+  }
+
+  return [NULL_FILTER]
 }
